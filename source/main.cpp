@@ -48,7 +48,7 @@ public:
     virtual tsl::elm::Element* createUI() {
         auto *rootFrame = new tsl::elm::HeaderOverlayFrame();
         rootFrame->setHeader(new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, s32 x, s32 y, s32 w, s32 h) {
-            renderer->drawString("EdiZon", false, 20, 50+2, 32, renderer->a(tsl::defaultOverlayColor));
+            renderer->drawString("EdiZon 金手指", false, 20, 50+2, 32, renderer->a(tsl::defaultOverlayColor));
             renderer->drawString(APP_VERSION, false, 20, 50+23, 15, renderer->a(tsl::versionTextColor));
 
             if (edz::cheat::CheatManager::getProcessID() != 0) {
@@ -113,8 +113,8 @@ public:
         auto rootFrame = new tsl::elm::HeaderOverlayFrame(97);
 
         rootFrame->setHeader(new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, s32 x, s32 y, s32 w, s32 h) {
-            renderer->drawString("EdiZon", false, 20, 50+2, 32, renderer->a(tsl::defaultOverlayColor));
-            renderer->drawString("Cheats", false, 20, 50+23, 15, renderer->a(tsl::versionTextColor));
+            renderer->drawString("EdiZon 金手指", false, 20, 50+2, 32, renderer->a(tsl::defaultOverlayColor));
+            renderer->drawString("葡萄糖酸菜鱼 汉化", false, 20, 50+23, 15, renderer->a(tsl::versionTextColor));
 
             if (edz::cheat::CheatManager::getProcessID() != 0) {
                 renderer->drawString("游戏ID:", false, 150 +14, 40 -6, 15, renderer->a(tsl::style::color::ColorText));
