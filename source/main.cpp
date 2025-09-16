@@ -48,13 +48,13 @@ public:
     virtual tsl::elm::Element* createUI() {
         auto *rootFrame = new tsl::elm::HeaderOverlayFrame();
         rootFrame->setHeader(new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, s32 x, s32 y, s32 w, s32 h) {
-            renderer->drawString("EdiZon", false, 20, 50+2, 32, (tsl::defaultOverlayColor));
+            renderer->drawString("金手指", false, 20, 50+2, 32, (tsl::defaultOverlayColor));
             renderer->drawString(APP_VERSION, false, 20, 52+23, 15, (tsl::bannerVersionTextColor));
 
             if (edz::cheat::CheatManager::getProcessID() != 0) {
-                renderer->drawString("Program ID:", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("Build ID:", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("Process ID:", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("游戏ID:", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("版本ID:", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("进程ID:", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
                 renderer->drawString(GuiMain::s_runningTitleIDString.c_str(), false, 250 +14, 40 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningBuildIDString.c_str(), false, 250 +14, 60 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningProcessIDString.c_str(), false, 250 +14, 80 -6, 15, (tsl::style::color::ColorHighlight));
@@ -74,7 +74,7 @@ public:
             });
             list->addItem(cheatsItem);
         } else {
-            auto noDmntSvc = new tsl::elm::ListItem("Cheat Service Unavailable!");
+            auto noDmntSvc = new tsl::elm::ListItem("作弊服务未运行!");
             list->addItem(noDmntSvc);
         }
 
@@ -113,13 +113,13 @@ public:
         auto rootFrame = new tsl::elm::HeaderOverlayFrame(97);
 
         rootFrame->setHeader(new tsl::elm::CustomDrawer([this](tsl::gfx::Renderer *renderer, s32 x, s32 y, s32 w, s32 h) {
-            renderer->drawString("EdiZon", false, 20, 50+2, 32, (tsl::defaultOverlayColor));
-            renderer->drawString("Cheats", false, 20, 52+23, 15, (tsl::bannerVersionTextColor));
+            renderer->drawString("金手指", false, 20, 50+2, 32, (tsl::defaultOverlayColor));
+            renderer->drawString("葡萄糖酸菜鱼 汉化", false, 20, 52+23, 15, (tsl::bannerVersionTextColor));
 
             if (edz::cheat::CheatManager::getProcessID() != 0) {
-                renderer->drawString("Program ID:", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("Build ID:", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
-                renderer->drawString("Process ID:", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("游戏ID:", false, 150 +14, 40 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("版本ID:", false, 150 +14, 60 -6, 15, (tsl::style::color::ColorText));
+                renderer->drawString("进程ID:", false, 150 +14, 80 -6, 15, (tsl::style::color::ColorText));
                 renderer->drawString(GuiMain::s_runningTitleIDString.c_str(), false, 250 +14, 40 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningBuildIDString.c_str(), false, 250 +14, 60 -6, 15, (tsl::style::color::ColorHighlight));
                 renderer->drawString(GuiMain::s_runningProcessIDString.c_str(), false, 250 +14, 80 -6, 15, (tsl::style::color::ColorHighlight));
@@ -129,17 +129,17 @@ public:
         if (edz::cheat::CheatManager::getCheats().size() == 0) {
             auto warning = new tsl::elm::CustomDrawer([](tsl::gfx::Renderer *renderer, u16 x, u16 y, u16 w, u16 h){
                 renderer->drawString("\uE150", false, 180, 274, 90, (0xFFFF));
-                renderer->drawString("No Cheats loaded!", false, 110, 360, 25, (0xFFFF));
+                renderer->drawString("金手指文件未加载!", false, 125, 360, 25, (0xFFFF));
             });
 
             rootFrame->setContent(warning);
 
         } else {
             auto list = new tsl::elm::List();
-            std::string head = "Section: " + this->m_section;
+            std::string head = "分类: " + this->m_section;
 
             if(m_section.length() > 0) list->addItem(new tsl::elm::CategoryHeader(head));
-            else list->addItem(new tsl::elm::CategoryHeader("Available cheats"));
+            else list->addItem(new tsl::elm::CategoryHeader("可用金手指"));
 
             bool skip = false, inSection = false, submenus = true;
             std::string skipUntil = "";
@@ -415,7 +415,7 @@ public:
     }
 
     std::unique_ptr<tsl::Gui> loadInitialGui() override {
-        return initially<GuiMain>();
+        return initially<GuiCheats>("");
     }
 
     
